@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import newMain from "./main";
-import {manager} from "./manager";
+import newMain from './main';
+import { manager } from './manager';
 let a = newMain;
+let b = newMain;
 const App: React.FC = () => {
-  const [loading, person] =manager.getInstance().getDataType("usePerson")("31232131");
+  const [loading, person] = manager.getInstance().getDataType('usePerson')(
+    '31232131'
+  );
   return (
     <div className="App">
       <header className="App-header">
@@ -19,6 +22,6 @@ const App: React.FC = () => {
       </header>
     </div>
   );
-}
+};
 
 export default App;
