@@ -1,8 +1,8 @@
-
 /**
  * 所有单例的基类，做了单例的基础检查。所有子类最好都写一个getInstance的静态方法来获取
  * @author fengwan@
  * Date:2012-10-29
+ * test bac
  */
 export class manager {
   // 其实实际的开发项目中，不一定会用到数组，有可能会把数组之类的进行封装
@@ -10,38 +10,36 @@ export class manager {
   private static classKeys: Function[] = [];
   private static classValues: any[] = [];
   constructor() {
-    let clazz: any = this["constructor"];
+    let clazz: any = this['constructor'];
     // 为空时，表示浏览器不支持这样读取构造函数
     if (!clazz) return;
     // 防止重复实例化
     if (manager.classKeys.indexOf(clazz) !== -1)
-      throw new Error(this + " 只允许实例化一次！");
+      throw new Error(this + ' 只允许实例化一次！');
     else {
       manager.classKeys.push(clazz);
       manager.classValues.push(this);
     }
   }
 
-  private static dataTypesObj:any = {};
+  private static dataTypesObj: any = {};
   /**
    * 注册数据类型
-   * @param name 
-   * @param dataType 
+   * @param name
+   * @param dataType
    */
-  public registDataType(name:string,dataType:Function){
-    if(manager.dataTypesObj[name]!=null){
+  public registDataType(name: string, dataType: Function) {
+    if (manager.dataTypesObj[name] != null) {
     }
-    manager.dataTypesObj[name]=dataType;
+    manager.dataTypesObj[name] = dataType;
   }
   /**
    * 获取数据类型
-   * @param name 
+   * @param name
    */
-  public getDataType(name:string){
+  public getDataType(name: string) {
     return manager.dataTypesObj[name];
   }
-
-
 
   // 注意，manager是要替换成你自己实现的子类 这里没有实际的作用
   private static instance: manager;
@@ -61,7 +59,7 @@ export class manager {
    */
   destroy(o: any = null): void {
     this.onDestroy();
-    manager.removeInstance(this["constructor"]);
+    manager.removeInstance(this['constructor']);
   }
 
   /**
